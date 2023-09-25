@@ -8,8 +8,6 @@ namespace AxiaBackend
     {
         public AppDataContext(DbContextOptions<AppDataContext> options) : base(options) 
         {
-
-
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
