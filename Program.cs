@@ -13,6 +13,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
+using Microsoft.AspNetCore.DataProtection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +25,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IConsoleWriter,ConsoleWriter>();
 //cnx DB
 builder.Services.AddDbContext<AppDataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("axiaRessource")));
+
+
 
 //entities
 builder.Services.AddTransient<IGroupeService, GroupeService>();
@@ -38,7 +43,12 @@ builder.Services.AddTransient<ILogService, LogService>();
 builder.Services.AddTransient<ITypeCongesService, TypeCongesService>();
 builder.Services.AddTransient<IUserService, UserService>();
 
-
+builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(@"C:\temp-keys\"))
+                .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration()
+                {
+                    EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
+                    ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
+                });
 
 var _jwtsetting = builder.Configuration.GetSection("JWTSetting");
 builder.Services.Configure<JWTSetting>(_jwtsetting);

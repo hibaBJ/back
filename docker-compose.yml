@@ -1,0 +1,28 @@
+﻿version: '3.9'
+
+#networks:
+ # - applicationnetwork
+services:
+  back:
+    image: back
+    container_name: back_application
+    ports:
+      - "7091:80"
+  #  networks:
+   #   - applicationnetwork
+    depends_on:
+      - sql
+  sql:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: sql_server2019
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=SQlServer18
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+volumes:
+  mssql_data:
+  #networks:
+   # - applicationnetwork
