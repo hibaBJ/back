@@ -5,7 +5,7 @@
 services:
   back:
     image: back
-    container_name: back_application
+    container_name: asp.net
     ports:
       - "7091:80"
   #  networks:
