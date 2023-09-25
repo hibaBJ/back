@@ -14,7 +14,7 @@ services:
       - sql
   sql:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
-    container_name: sql_server2019
+    container_name: sqlDb
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=SQlServer18
