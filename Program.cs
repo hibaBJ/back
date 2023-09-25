@@ -27,7 +27,6 @@ builder.Services.AddTransient<IConsoleWriter,ConsoleWriter>();
 builder.Services.AddDbContext<AppDataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("axiaRessource")));
 
 
-
 //entities
 builder.Services.AddTransient<IGroupeService, GroupeService>();
 builder.Services.AddTransient<IEmployeeService, EmployeeService>();
