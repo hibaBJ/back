@@ -26,6 +26,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
           context: .
-          file: ./axiaBackend/Dockerfile
+          file: ./AxiaBackend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USER}}/back:latest
