@@ -4,7 +4,7 @@
  # - applicationnetwork
 services:
   back:
-    image: back
+    image: hiba1999/back:latest
     container_name: asp.net
     ports:
       - "7091:80"
@@ -14,7 +14,7 @@ services:
       - sql
   sql:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
-    container_name: sqlDb
+    container_name: sql
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=SQlServer18
