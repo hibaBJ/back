@@ -42,12 +42,12 @@ builder.Services.AddTransient<ILogService, LogService>();
 builder.Services.AddTransient<ITypeCongesService, TypeCongesService>();
 builder.Services.AddTransient<IUserService, UserService>();
 
-builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(@"C:\temp-keys\"))
-                .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration()
-                {
-                    EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
-                    ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
-                });
+//builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(@"C:\temp-keys\"))
+//                .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration()
+//                {
+//                    EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
+//                    ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
+//                });
 
 var _jwtsetting = builder.Configuration.GetSection("JWTSetting");
 builder.Services.Configure<JWTSetting>(_jwtsetting);
