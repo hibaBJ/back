@@ -81,7 +81,7 @@ builder.Services.AddSingleton(builder.Configuration);
 //ajout swagger
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title="ASP.NET CORE API",Version="v1"});
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title=".NET API",Version="v1"});
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
